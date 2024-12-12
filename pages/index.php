@@ -53,11 +53,10 @@
                             <span class="text-white-50 ms-1">Selamat datang di Pemrograman Web Native</span>
                         </div>
                         <h2 class="text-white fw-normal mb-4 mt-3 lh-base">
-                            Hyper - Atur dan Kelola Daftar Aktivitas Anda dengan Mudah
+                            TODO - Atur dan Kelola Daftar Aktivitas atau Tugas Anda dengan Mudah
                         </h2>
 
-                        <p class="mb-4 font-16 text-white-50">Hyper is a fully featured dashboard and admin template
-                            comes with tones of well designed UI elements, components, widgets and pages.</p>
+                        <p class="mb-4 font-16 text-white-50"> </p>
 
                         <a href="/register" class="btn btn-lg font-16 btn-success">Register <i class="mdi mdi-arrow-right ms-1"></i></a>
                         <a href="/login" class="btn btn-lg font-16 btn-info">Login</a>
