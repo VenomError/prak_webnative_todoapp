@@ -89,7 +89,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">
-                                    Create New Task
+                                    Edit Task
                                 </h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                             </div>

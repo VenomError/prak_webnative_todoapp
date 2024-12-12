@@ -58,8 +58,13 @@
 
                         <p class="mb-4 font-16 text-white-50"> </p>
 
-                        <a href="/register" class="btn btn-lg font-16 btn-success">Register <i class="mdi mdi-arrow-right ms-1"></i></a>
-                        <a href="/login" class="btn btn-lg font-16 btn-info">Login</a>
+                        <?php if (empty(session('auth'))) { ?>
+                            <a href="/register" class="btn btn-lg font-16 btn-success">Register <i class="mdi mdi-arrow-right ms-1"></i></a>
+                            <a href="/login" class="btn btn-lg font-16 btn-info">Login</a>
+                        <?php } else { ?>
+                            <a href="/dashboard" class="btn btn-lg font-16 btn-info">Dashboard</a>
+                        <?php } ?>
+
                     </div>
                 </div>
                 <div class="col-md-5 offset-md-2">
