@@ -32,7 +32,6 @@
         └── registerProcess.php
         └── updateCompletedTask.php
         └── updateTask.php
-    └── db_todolist.sql
     └── db.php
     └── function.php
     └── index.php
