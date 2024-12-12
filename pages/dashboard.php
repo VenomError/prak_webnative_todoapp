@@ -16,12 +16,7 @@ $stat = [
     'canceled' => $canceled->num_rows,
     'inprogress' => $inprogress->num_rows,
 ];
-$selectedTask = null;
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $selectedTask = $conn->query("SELECT * FROM tasks WHERE  id='$id' AND user_id='$user_id'")
-        ->fetch_object();
-}
+
 
 
 $notifs = $conn->query("SELECT * FROM notifications WHERE user_id = '$user_id' ORDER BY due_date DESC");
@@ -67,12 +62,6 @@ $notifs = $conn->query("SELECT * FROM notifications WHERE user_id = '$user_id' O
 
                     </div>
                     <div id="taskDetail"></div>
-
-                    <?php if (!empty($selectedTask) && $selectedTask != null) { ?>
-                        <div class="col-12">
-                            <?= component('task/detail', ['task' => $selectedTask]) ?>
-                        </div>
-                    <?php } ?>
                     <div class="col-12 ">
                         <div class="card ">
                             <div class="card-header d-flex justify-content-between align-items-center">
@@ -104,7 +93,8 @@ $notifs = $conn->query("SELECT * FROM notifications WHERE user_id = '$user_id' O
                             <div class="card-body pt-2">
                                 <div class="table-responsive">
                                     <?= component('task/table', [
-                                        'data' => $all->fetch_all(MYSQLI_ASSOC)
+                                        'data' => $all->fetch_all(MYSQLI_ASSOC),
+                                        'conn' => $conn
                                     ]) ?>
                                 </div> <!-- end table-responsive-->
 

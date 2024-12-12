@@ -66,9 +66,10 @@
                 </td>
                 <td>
                     <div class="btn-group">
-                        <a href="?id=<?= $task['id'] ?>#taskDetail" class="btn btn-sm btn-light" title="view task">
+                        <button class="btn btn-sm btn-light" title="view task"
+                            data-bs-toggle="modal" data-bs-target="#detailModalTask<?= $task['id'] ?>">
                             <i class="mdi mdi-eye"></i>
-                        </a>
+                        </button>
                         <button data-bs-toggle="modal" data-bs-target="#editModalTask<?= $task['id'] ?>" class="btn btn-sm btn-light" title="edit task">
                             <i class="mdi mdi-square-edit-outline"></i>
                         </button>
@@ -101,6 +102,33 @@
                                     'description' => $task['description'],
                                     'due_date' => $task['due_date'],
                                 ]) ?>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div>
+                </div>
+
+                <div id="detailModalTask<?= $task['id'] ?>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    Detail Task
+                                </h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?php
+                                $selectedTask = null;
+                                $id = $task['id'];
+                                $user_id = auth()->id;
+                                $selectedTask = $conn->query("SELECT * FROM tasks WHERE  id='$id' AND user_id='$user_id'")
+                                    ->fetch_object();
+                                ?>
+                                <?php if (!empty($selectedTask) && $selectedTask != null) { ?>
+                                    <div class="col-12">
+                                        <?= component('task/detail', ['task' => $selectedTask]) ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div><!-- /.modal-content -->
                     </div>
