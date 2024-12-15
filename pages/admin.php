@@ -1,12 +1,12 @@
 <?php
-onlyAuth('user');
-$user_id = auth()->id;
-$all = $conn->query("SELECT * FROM tasks WHERE user_id = '$user_id' ORDER BY  due_date ASC");
+onlyAuth('admin');
 
-$new = $conn->query("SELECT * FROM tasks WHERE status = 'new' AND user_id = '$user_id' ");
-$completed = $conn->query("SELECT * FROM tasks WHERE status = 'completed'  AND user_id = '$user_id' ");
-$inprogress = $conn->query("SELECT * FROM tasks WHERE status = 'inprogress'  AND user_id = '$user_id' ");
-$canceled = $conn->query("SELECT * FROM tasks WHERE status = 'canceled'  AND user_id = '$user_id' ");
+$all = $conn->query("SELECT * FROM tasks ORDER BY  due_date ASC");
+
+$new = $conn->query("SELECT * FROM tasks WHERE status = 'new' ");
+$completed = $conn->query("SELECT * FROM tasks WHERE status = 'completed'  ");
+$inprogress = $conn->query("SELECT * FROM tasks WHERE status = 'inprogress'  ");
+$canceled = $conn->query("SELECT * FROM tasks WHERE status = 'canceled'  ");
 
 
 $stat = [
@@ -19,7 +19,7 @@ $stat = [
 
 
 
-$notifs = $conn->query("SELECT * FROM notifications WHERE user_id = '$user_id' ORDER BY due_date DESC");
+$notifs = $conn->query("SELECT * FROM notifications ORDER BY due_date DESC");
 
 ?>
 <div class="wrapper">
@@ -101,12 +101,6 @@ $notifs = $conn->query("SELECT * FROM notifications WHERE user_id = '$user_id' O
                             </div> <!-- end card body-->
                         </div> <!-- end card -->
                     </div><!-- end col-->
-                </div>
-                <!-- end row-->
-                <div class="row">
-                    <div class="col-12">
-                        <?= component('calendar') ?>
-                    </div>
                 </div>
             </div> <!-- container -->
 

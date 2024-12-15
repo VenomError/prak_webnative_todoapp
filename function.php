@@ -44,10 +44,19 @@ function auth()
     }
 }
 
-function onlyAuth()
+
+function onlyAuth($role = 'user')
 {
     if (!isLogin()) {
         redirect('/login');
+    }
+    $authRole = auth()->role;  // Correct way to access the role
+    if ($authRole != $role) {
+        if ($authRole == 'user') {
+            return redirect('/dashboard');
+        } elseif ($authRole == 'admin') {
+            return redirect('/admin');
+        }
     }
 }
 function onlyGuest()
