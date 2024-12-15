@@ -19,6 +19,7 @@
     └── 📁pages
         └── calendar.php
         └── dashboard.php
+        └── admin.php
         └── index.php
         └── login.php
         └── logout.php
